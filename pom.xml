@@ -11,6 +11,7 @@
         <module>order</module>
         <module>product</module>
         <module>user</module>
+        <module>eureka</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -25,6 +26,7 @@
         <slf4j.version>1.7.30</slf4j.version>
         <lombok.version>1.18.12</lombok.version>
         <junit.version>4.12</junit.version>
+        <eureka.version>1.4.7.RELEASE</eureka.version>
     </properties>
 
     <dependencyManagement>
@@ -81,8 +83,19 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-
-
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+        <!-- 完善监控信息 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- 热启动 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+    </dependencies>
 </project>

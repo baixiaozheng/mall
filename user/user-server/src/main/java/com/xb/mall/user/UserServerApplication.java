@@ -1,4 +1,4 @@
-package com.xb.mall.order;
+package com.xb.mall.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,12 +6,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author baixiaozheng
- * @date 2020/6/5 11:36
+ * @date 2020/6/5 20:34
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class OrderServerApplication {
+public class UserServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OrderServerApplication.class,args);
+        SpringApplication.run(UserServerApplication.class, args);
     }
 }

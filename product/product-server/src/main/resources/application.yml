@@ -23,6 +23,12 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: mall-product #修改eureka上的默认描述信息
 
-#info:
-#  app.name: my-spring-cloud-app
+info:
+  app.name: mall-product-server-app
