@@ -20,7 +20,7 @@ public class OrderController {
 
     @GetMapping("products")
     public String products(){
-        return restTemplate.getForObject("http://127.0.0.1:9001/product/list",String.class);
+        return restTemplate.getForObject("http://127.0.0.1:9001/product/listForOrder?productIds=1,2", String.class);
     }
 
 

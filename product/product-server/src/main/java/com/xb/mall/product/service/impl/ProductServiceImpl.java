@@ -5,11 +5,14 @@ import com.xb.mall.product.enums.ProductStatus;
 import com.xb.mall.product.repository.ProductRepository;
 import com.xb.mall.product.service.ProductService;
 import com.xb.mall.product.vo.DeductStockVo;
+import com.xb.mall.product.vo.ProductVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author baixiaozheng
@@ -30,5 +33,16 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public List<Product> deductStock(List<DeductStockVo> deductStockVos){
         return null;
+    }
+
+    @Override
+    public List<ProductVo> listByIds(List<Long> ids) {
+        List<Product> products = productRepository.findByIdIn(ids);
+        List<ProductVo> vos = products.stream().map(e -> {
+            ProductVo vo = new ProductVo();
+            BeanUtils.copyProperties(e, vo);
+            return vo;
+        }).collect(Collectors.toList());
+        return vos;
     }
 }

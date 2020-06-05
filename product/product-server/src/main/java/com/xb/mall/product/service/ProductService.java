@@ -3,6 +3,7 @@ package com.xb.mall.product.service;
 import com.xb.mall.product.entity.Product;
 import com.xb.mall.product.enums.ProductStatus;
 import com.xb.mall.product.vo.DeductStockVo;
+import com.xb.mall.product.vo.ProductVo;
 
 import java.util.List;
 
@@ -25,4 +26,12 @@ public interface ProductService {
      * @return 商品
      */
     List<Product> deductStock(List<DeductStockVo> deductStockVos);
+
+    /**
+     * 根据id列表查询商品信息
+     * @param ids id的列表
+     * @return 商品列表
+     */
+    List<ProductVo> listByIds(List<Long> ids);
+
 }

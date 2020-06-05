@@ -30,5 +30,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
      */
     List<Product> findByProductStatus(ProductStatus status);
 
+    /**
+     * 根据id列表查询商品信息
+     * @param ids id的列表
+     * @return 商品列表
+     */
+    List<Product> findByIdIn(List<Long> ids);
+
 
 }
