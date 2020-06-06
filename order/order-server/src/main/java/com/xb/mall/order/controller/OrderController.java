@@ -1,11 +1,15 @@
 package com.xb.mall.order.controller;
 
+import com.xb.mall.product.client.ProductServiceClient;
+import com.xb.mall.product.vo.ProductVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author baixiaozheng
@@ -17,15 +21,11 @@ import org.springframework.web.client.RestTemplate;
 public class OrderController {
 
     @Autowired
-    private RestTemplate restTemplate;
-
-    //public static final String BASE_URL="http://127.0.0.1:9001";
-    public static final String BASE_URL="http://MALL-PRODUCT-SERVER";
+    private ProductServiceClient productServiceClient;
 
     @GetMapping(value = "products")
-    public String products(){
-        String result = restTemplate.getForObject(BASE_URL+"/product/listForOrder?productIds=1,2", String.class);
-        return result;
+    public List<ProductVo> products(){
+        List<ProductVo> vos = productServiceClient.listForOrder(Arrays.asList(1L,2L));
+        return vos;
     }
-
 }
