@@ -8,6 +8,7 @@ import com.xb.mall.product.vo.DeductStockVo;
 import com.xb.mall.product.vo.ProductVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,9 @@ import java.util.stream.Collectors;
 @Service
 public class ProductServiceImpl implements ProductService {
 
+
+    @Value("${server.port}")
+    private int port;
     @Autowired
     private ProductRepository productRepository;
 
@@ -41,6 +45,7 @@ public class ProductServiceImpl implements ProductService {
         List<ProductVo> vos = products.stream().map(e -> {
             ProductVo vo = new ProductVo();
             BeanUtils.copyProperties(e, vo);
+            vo.setProductDescription(vo.getProductDescription()+" from port : "+port );
             return vo;
         }).collect(Collectors.toList());
         return vos;
