@@ -12,6 +12,7 @@
     <modules>
         <module>user-common</module>
         <module>user-server</module>
+        <module>user-client</module>
     </modules>
 
     <artifactId>user</artifactId>
