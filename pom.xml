@@ -28,6 +28,7 @@
         <junit.version>4.12</junit.version>
         <eureka.version>1.4.7.RELEASE</eureka.version>
         <ribbon.version>1.4.7.RELEASE</ribbon.version>
+        <hystrix.version>1.4.7.RELEASE</hystrix.version>
     </properties>
 
     <dependencyManagement>

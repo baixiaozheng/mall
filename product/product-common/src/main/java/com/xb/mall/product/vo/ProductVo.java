@@ -2,6 +2,7 @@ package com.xb.mall.product.vo;
 
 import com.xb.mall.product.enums.ProductStatus;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
  * @date 2020/6/5 15:13
  */
 @Data
+@Accessors(chain = true)
 public class ProductVo {
 
     private Long id;

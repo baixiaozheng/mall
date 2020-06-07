@@ -35,6 +35,7 @@ public class ProductController {
 
     @GetMapping(value = "listForOrder")
     public List<ProductVo> listForOrder(@RequestParam List<Long> productIds){
+
         List<ProductVo>  vos = productService.listByIds(productIds);
         return vos;
     }
