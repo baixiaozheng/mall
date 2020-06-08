@@ -1,6 +1,7 @@
 package com.xb.mall.order.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.xb.mall.product.client.ProductServiceClient;
 import com.xb.mall.product.vo.ProductVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,10 @@ public class OrderController {
     private ProductServiceClient productServiceClient;
 
     @GetMapping(value = "products")
-    @HystrixCommand(fallbackMethod = "productsFail")
+    @HystrixCommand(fallbackMethod = "productsFail",
+                    commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000")
+                    })
     public List<ProductVo> products(){
         List<ProductVo> vos = productServiceClient.listForOrder(Arrays.asList(1L,2L));
         return vos;

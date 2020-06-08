@@ -35,7 +35,11 @@ public class ProductController {
 
     @GetMapping(value = "listForOrder")
     public List<ProductVo> listForOrder(@RequestParam List<Long> productIds){
-
+        try {
+            Thread.sleep(2000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<ProductVo>  vos = productService.listByIds(productIds);
         return vos;
     }
