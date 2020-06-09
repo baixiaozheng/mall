@@ -8,10 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,12 +32,12 @@ public class ProductController {
 
     @GetMapping(value = "listForOrder")
     public List<ProductVo> listForOrder(@RequestParam List<Long> productIds){
-        try {
-            Thread.sleep(2000L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         List<ProductVo>  vos = productService.listByIds(productIds);
         return vos;
+    }
+
+    @GetMapping("/get/{id}")
+    public ProductVo get(@PathVariable("id") Long id){
+        return productService.getById(id);
     }
 }

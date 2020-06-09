@@ -34,4 +34,6 @@ public interface ProductService {
      */
     List<ProductVo> listByIds(List<Long> ids);
 
+    ProductVo getById(Long id);
+
 }

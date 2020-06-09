@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -49,5 +50,16 @@ public class ProductServiceImpl implements ProductService {
             return vo;
         }).collect(Collectors.toList());
         return vos;
+    }
+
+    @Override
+    public ProductVo getById(Long id) {
+        Optional<Product> optional = productRepository.findById(id);
+        if(optional.isPresent()){
+            ProductVo vo = new ProductVo();
+            BeanUtils.copyProperties(optional.get(), vo);
+            return vo;
+        }
+        return null;
     }
 }
