@@ -1,0 +1,27 @@
+server:
+  port: 80
+spring:
+  application:
+    name: mall-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: mall-zuul #修改eureka上的默认描述信息
+
+info:
+  app.name: mall-zuul
+
+zuul:
+  routes:
+#    myOrder:
+#      path: /myOrder/**
+#      serviceId: mall-order-server
+    mall-order-server: /myOrder/** #简单写法
+  ignored-patterns: #屏蔽掉的请求
+    - /mall-order-server
+
+logging:
+  level:
+    org.springframework.web: TRACE #修改日志级别，启动时控制台可以打印映射的url

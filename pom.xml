@@ -12,6 +12,7 @@
         <module>product</module>
         <module>user</module>
         <module>eureka</module>
+        <module>zuul</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -29,6 +30,7 @@
         <eureka.version>1.4.7.RELEASE</eureka.version>
         <ribbon.version>1.4.7.RELEASE</ribbon.version>
         <hystrix.version>1.4.7.RELEASE</hystrix.version>
+        <zuul.version>1.4.7.RELEASE</zuul.version>
     </properties>
 
     <dependencyManagement>
