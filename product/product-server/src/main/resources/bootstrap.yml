@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config
+      name: product-server #需要获取的资源名，不需要后缀
+      profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: mall-product-9001 #修改eureka上的默认描述信息
+

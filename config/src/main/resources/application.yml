@@ -1,0 +1,23 @@
+server:
+  port: 9900
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/baixiaozheng/mall-config.git
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: mall-config #修改eureka上的默认描述信息
+management:
+  endpoints:
+    web:
+      expose: "*"
+logging:
+  level:
+    org.springframework.web: TRACE
